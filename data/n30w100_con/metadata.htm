@@ -1,0 +1,396 @@
+<HTML>
+<HEAD>
+<STYLE>
+
+        BODY {background-color:#FBFFFF; margin:0.25in; 
+              font-size:10pt; font-family:Arial,sans-serif}
+        
+        H1   {margin-left:0.05in; position:relative; top:-6; text-align:center;
+              font-weight:bold; font-size:18; font-family:Verdana,sans-serif; color:#006400}
+        
+        H2   {margin-left:0.25in; position:relative; top:-16; text-align:center;
+              font-size:13; font-family:Verdana,sans-serif; color:#006400}
+
+        
+        TABLE  {position:relative; top:-10; valign:top; table-layout:fixed; 
+                border-collapse:collapse}
+        
+        TD   {text-align:center}
+        
+        TD   {font-weight:bold; font-size:11pt; border-color:#6495ED}
+        
+        .tsel  {color:#FFFFFF; background-color:#6495ED}
+        
+        .tun   {color:#00008B; background-color:#B8DEFA}
+        
+        .tover {color:#0000CD; background-color:#B8E6FF; cursor:hand}
+        
+        .f   {background-color:#FFFFFF; border:'1.5pt solid #6495ED'; 
+              position:relative; top:-10}
+
+        
+        .ph1  {color:#2E8B57; font-weight:bold; cursor:}
+        
+        .ph2  {margin-left:0.2in; color:#2E8B57; font-weight:bold; cursor:}
+        
+        .pover1 {color:#006000; font-weight:bold; cursor:hand}
+        
+        .pover2 {margin-left:0.2in; color:#006000; font-weight:bold; cursor:hand}
+
+        
+        .pn  {color:#00008B; font-weight:bold}
+        
+        .pv  {font-family:Verdana,sans-serif; line-height:135%;
+              color:#191970; margin:0in 0.15in 0.75in 0.15in}
+        
+        .pe1  {margin-left:0.2in}
+        
+        .pe2  {margin-left:0.25in; font-weight:normal; color:#191970;}
+        
+        .lt  {line-height:115%}
+        
+        .lt2  {line-height:115%; margin-bottom:1mm}
+        
+        .sr1  {margin-left:0in}
+        .sr2  {margin-left:0.2in}
+        .sr3  {margin-left:0.4in}
+        .srh1  {color:#00008B; font-weight:bold; margin-left:0in}
+        .srh2  {color:#00008B; font-weight:bold; margin-left:0.2in}
+
+        
+        .name   {margin-left:0.05in; position:relative; top:-6; text-align:center;
+                 font-weight:bold; font-size:18; font-family:Verdana,sans-serif; color:#006400}
+        .sub   {margin-left:0.25in; text-align:center; position:relative; top:3; 
+                font-weight:bold; font-size:13; font-family:Verdana,sans-serif; color:#006400}
+        .search   {margin:0in 0.15in 0.75in 0.15in; 
+                   color:#191970; font-family:Verdana,sans-serif; font-size:13}
+        .head   {color:#006400}
+      </STYLE>
+<SCRIPT LANGUAGE="JScript"><!--
+
+      //changes the color of the tabs or headings that you can click
+      //when the mouse hovers over them
+      function doHilite()  {
+        var e = window.event.srcElement;
+        if (e.className == "tun") {
+          e.className = "tover";
+        }
+        else if (e.className == "tover") {
+            e.className = "tun";
+        }
+        else if (e.className == "ph1") {
+            e.className = "pover1";
+        }
+        else if (e.className == "ph2") {
+            e.className = "pover2";
+        }
+        else if (e.className == "pover1") {
+            e.className = "ph1";
+        }
+        else if (e.className == "pover2") {
+            e.className = "ph2";
+        }
+
+        window.event.cancelBubble = true;
+      }
+
+      //changes the style of the selected tab to unselected and hide its text, then 
+      //set the style of the tab that was clicked on to selected and show its text
+      function changeTab(eRow)  {
+        var tabs = eRow.cells;
+        for (var i = 0; i < tabs.length; i++) {
+          var oldTab = tabs[i];
+          if (oldTab.className == "tsel") {
+            break;
+          }
+        }
+        oldTab.className = "tun";
+        var oldContent = getAssociated(oldTab);
+        oldContent.style.display = "none";
+
+        var newTab = window.event.srcElement;
+        newTab.className ="tsel";
+        var newContent = getAssociated(newTab);
+        newContent.style.display = "block";
+
+        window.event.cancelBubble = true;
+      }
+
+      //hide or show the text assoicated with the heading that was clicked
+      function hideShowGroup(e)  {
+        var theGroup = e.children[0];
+        if (theGroup.style.display == "none") {
+          theGroup.style.display="block";
+        }
+        else { 
+          theGroup.style.display="none";
+        }
+
+        window.event.cancelBubble = true;
+      }
+
+      //returns the name of the element containing the text associated with each tab
+      function getAssociated(e) {
+        if (e.tagName == "TD") {
+          switch (e.id) {
+            case "DescTab":
+              return (Description);
+            case "SpatialTab": 
+              return (Spatial);
+            case "AttribTab": 
+              return (Attributes);
+          }
+        }
+      }
+
+      //centers the thumbnail
+      function position() {
+        var e;
+        e = document.all("thumbnail");
+        if (e != null) {
+          b = document.body;
+          w1 = b.clientWidth - 80;
+          w2 = w1 - thumbnail.width;
+          var margin = Math.floor(w2 * .5);
+          thumbnail.style.visibility = "hidden";
+          thumbnail.style.marginLeft = margin;
+          thumbnail.style.visibility = "visible";
+        }
+      }
+
+      //parse text to respect line breaks added - increases readability.
+      //lines beginning with a ">" character are presented with a monospace
+      //(fixed-width) font - e.g., so equations will appear correctly
+      function fix(e) {
+        var par = e.parentNode;
+        e.id = "";
+        var pos = e.innerText.indexOf("\n");
+        if (pos > 0) {
+          while (pos > 0) {
+            var t = e.childNodes(0);
+            var n = document.createElement("PRE");
+            var s = t.splitText(pos);
+            e.insertAdjacentElement("afterEnd", n);
+            n.appendChild(s);
+            e = n;
+            pos = e.innerText.indexOf("\n");
+          }
+          var count = (par.children.length);
+          for (var i = 0; i < count; i++) {
+            e = par.children(i);
+            if (e.tagName == "PRE") {
+              pos = e.innerText.indexOf(">");
+              if (pos != 0) {
+                n = document.createElement("DIV");
+                e.insertAdjacentElement("afterEnd", n);
+                n.innerText = e.innerText;
+                e.removeNode(true);
+              }
+            }
+          }
+          if (par.children.tags("PRE").length > 0) {
+            count = (par.childNodes.length);
+            for (i = 0; i < count; i++) {
+              e = par.children(i);
+              if (e.tagName == "PRE") {
+                e.id = "";
+                if (i < (count-1)) {
+                  var e2 = par.children(i + 1);
+                  if (e2.tagName == "PRE") {
+                    e.insertAdjacentText("beforeEnd", e2.innerText+"\n");
+                    e2.removeNode(true);
+                    count = count-1;
+                    i = i-1;
+                  }
+                }
+              }
+            }
+          }
+        }
+        else {
+          n = document.createElement("DIV");
+          par.appendChild(n);
+          n.innerText = e.innerText;
+          e.removeNode(true);
+        }
+      }
+
+      --></SCRIPT>
+</HEAD>
+<BODY onload="position();" onresize="position();" oncontextmenu="return false">
+<H1>HydroSHEDS (CON) - Hydrologically conditioned elevation at 3s resolution</H1>
+<H2>Raster dataset - ESRI GRID</H2>
+<TABLE cols="3" frame="void" rules="cols" width="315" height="28">
+<COL WIDTH="105" /><COL WIDTH="105" /><COL WIDTH="105" />
+<TR height="28" onmouseover="doHilite()" onmouseout="doHilite()" onclick="changeTab(this)">
+<TD ID="DescTab" CLASS="tsel" TITLE="Click to see a description of the data">Description</TD>
+<TD ID="SpatialTab" CLASS="tun" TITLE="Click for details about the spatial data">Spatial</TD>
+<TD ID="AttribTab" CLASS="tun" TITLE="Click for details about the attribute data">Attributes</TD>
+</TR>
+</TABLE>
+<DIV ID="Group" CLASS="f">
+<DIV ID="Description" CLASS="pv" STYLE="display:block"><BR />
+<DIV CLASS="pn">Keywords</DIV>
+<DIV STYLE="margin-left:0.2in" CLASS="lt2"><SPAN CLASS="pn">Theme: </SPAN>
+Earth Science, Land Surface, Topography, Terrain Elevation, Digital Elevation Model, 3-arc-second DEM, Hydrosphere, Surface Water, Drainage, Hydropattern, Rivers, Streams, Watershed Characteristics, Cartography, Mapping, GIS, EDC, EROS, USGS</DIV>
+<BR />
+<DIV CLASS="pn">Description</DIV>
+<DIV CLASS="ph2" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Abstract
+      <DIV CLASS="pe2" STYLE="display:">
+<SPAN CLASS="lt"><PRE ID="original">HydroSHEDS (Hydrological data and maps based on SHuttle Elevation Derivatives at multiple Scales) provides hydrographic information in a consistent and comprehensive format for regional and global-scale applications. HydroSHEDS offers a suite of geo-referenced data sets (vector and raster), including stream networks, watershed boundaries, drainage directions, and ancillary data layers such as flow accumulations, distances, and river topology information. HydroSHEDS is derived from elevation data of the Shuttle Radar Topography Mission (SRTM) at 3 arc-second resolution. Available HydroSHEDS resolutions range from 3 arc-second (approx. 90 meters at the equator) to 5 minute (approx. 10 km at the equator) with seamless near-global extent.</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DIV>
+<DIV CLASS="ph2" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Purpose
+      <DIV ID="Purpose" CLASS="pe2" STYLE="display:">
+<SPAN CLASS="lt"><PRE ID="original">The goal of developing HydroSHEDS was to generate key data layers to support regional and global watershed analyses, hydrological modeling, and freshwater conservation planning at a quality, resolution and extent that had previously been unachievable.</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DIV>
+<DIV CLASS="ph2" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Supplementary Information
+      <DIV CLASS="pe2" STYLE="display:">
+<SPAN CLASS="lt"><PRE ID="original">For more information please refer to the HydroSHEDS Technical Documentation:
+Lehner, B., Verdin, K., Jarvis, A. (2006): HydroSHEDS Technical Documentation. World Wildlife Fund US, Washington, DC. Available at http://hydrosheds.cr.usgs.gov.
+Please also visit http://www.worldwildlife.org/hydrosheds and http://hydrosheds.cr.usgs.gov for information on data download and status reports.</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DIV>
+<DIV STYLE="text-align:center; color:#6495ED">_________________</DIV><BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Status of the data
+    <DIV CLASS="pe2" STYLE="display:none">
+Complete<BR /><I>Data update frequency: </I>
+As needed<BR /></DIV>
+</DIV>
+<BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Time period for which the data is relevant
+    <DIV CLASS="pe2" STYLE="display:none">
+<DIV><I>Date and time: </I>
+2006</DIV>
+<DIV>
+<I>Description: </I>
+<SPAN CLASS="lt"><PRE ID="original">publication date</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DIV>
+</DIV>
+<BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Publication Information
+    <DIV CLASS="pe2" STYLE="display:none"><SPAN CLASS="lt2">
+<I>Who created the data: </I>World Wildlife Fund (WWF)<BR /></SPAN>
+<DIV><I>Date and time: </I>
+2006</DIV>
+<DIV><I>Publisher and place: </I>
+U.S. Geological Survey, Sioux Falls, SD
+</DIV>
+</DIV>
+</DIV>
+<DIV STYLE="text-align:center; color:#6495ED">_________________</DIV><BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Data storage and access information
+                    <DIV CLASS="pe2" STYLE="display:none">
+<I>File name: </I>n30w100_con<BR />
+<DIV><I>Location of the data: </I></DIV><DIV><LI STYLE="margin-left:0.2in">http://hydrosheds.cr.usgs.gov</LI></DIV>
+<DIV><LI STYLE="margin-left:0.2in">http://www.worldwildlife.org/hydrosheds</LI></DIV>
+<I>Data processing environment: </I><SPAN CLASS="lt">Microsoft Windows XP Professional Version 2002 Service Pack 2; ESRI ArcView 3.2a; ESRI ArcGIS 8.2</SPAN><BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Accessing the data
+    <DIV CLASS="pe2" STYLE="display:none">
+<I>Size of the data: </I>35 MB<BR />
+<I>Data transfer size: </I>zipped MB<BR />
+<BR />
+</DIV>
+</DIV>
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Constraints on accessing and using the data
+                          <DIV CLASS="pe2" STYLE="display:none">
+<I>Access constraints: </I>
+<SPAN CLASS="lt">None.<BR /></SPAN><DIV>
+<I>Use constraints: </I>
+<SPAN CLASS="lt"><PRE ID="original">Users may apply HydroSHEDS for non-commercial purposes. We kindly ask users to cite HydroSHEDS in any published material produced using this data. Any modification of the original data by users must be noted. The authors of HydroSHEDS may request reprints of publications and copies of derived materials. The user shall not reproduce, convert, (re)publish, (re)distribute, (re)broadcast, (re)transmit, sell, rent, lease, sublicense, lend, assign, time-share, or transfer, in whole or in part, or provide unlicensed third parties access to the data and related materials without explicit written permission from the authors. For more details see HydroSHEDS Technical Documentation.</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+</DIV>
+</DIV>
+</DIV>
+</DIV>
+<BR />
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Details about this document
+                    <DIV CLASS="pe2" STYLE="display:none">
+
+                          Contents last updated: 20090101
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Who completed this document
+      <DIV CLASS="pe2" STYLE="display:none">
+Bernhard Lehner<BR />World Wildlife Fund US<BR /><I>mailing and physical address:</I><BR /><DIV STYLE="margin-left:0.3in">
+<DIV CLASS="lt">
+<PRE ID="original">1250 24th Street NW</PRE>
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<DIV>
+Washington, DC 20007</DIV>
+<DIV>USA</DIV></DIV>
+<BR />
+hydrosheds@wwfus.org<BR /><BR />
+</DIV>
+</DIV>
+<DIV CLASS="ph1" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Standards used to create this document
+      <DIV CLASS="pe2" STYLE="display:none">
+<I>Standard name: </I>FGDC Content Standards for Digital Geospatial Metadata<BR />
+<I>Standard version: </I>FGDC-STD-001-1998<BR />
+<I>Time convention used in this document: </I>local time<BR />
+</DIV>
+</DIV>
+</DIV>
+</DIV>
+<BR />
+</DIV>
+<DIV ID="Spatial" class="pv" STYLE="display:none"><BR />
+<DIV CLASS="pn">Horizontal coordinate system</DIV>
+<DIV STYLE="margin-left:0.2in"><I>Geographic coordinate system name: </I>Geographic</DIV>
+<DIV CLASS="ph2" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Details
+      <DIV CLASS="pe2" STYLE="display:none">
+<DIV CLASS="srh1">Geographic Coordinate System</DIV>
+<DIV CLASS="sr2"><I>Geographic Coordinate Units: </I>Decimal degrees</DIV>
+<BR />
+<DIV CLASS="srh1">Geodetic Model</DIV>
+<DIV CLASS="sr2"><I>Horizontal Datum Name: </I>D_WGS_1984</DIV>
+<DIV CLASS="sr2"><I>Ellipsoid Name: </I>WGS_1984</DIV>
+<DIV CLASS="sr2"><I>Semi-major Axis: </I>6378137.000000</DIV>
+<DIV CLASS="sr2"><I>Denominator of Flattening Ratio: </I>298.257224</DIV>
+</DIV>
+</DIV>
+<BR />
+<DIV CLASS="srh1">Altitude System Definition</DIV><DIV CLASS="sr2"><I>Datum Name: </I>EGM96</DIV><DIV CLASS="sr2"><I>Distance Units: </I>Meters</DIV>
+<DIV STYLE="text-align:center; color:#6495ED">_________________</DIV><BR />
+<DIV CLASS="pn">Bounding coordinates</DIV>
+<DIV STYLE="margin-left:0.2in" CLASS="pn">Horizontal</DIV>
+<DIV STYLE="margin-left:0.4in" CLASS="pn">In decimal degrees</DIV>
+<DIV STYLE="margin-left:0.6in"><I>West: </I>
+-100</DIV>
+<DIV STYLE="margin-left:0.6in"><I>East: </I>
+-95</DIV>
+<DIV STYLE="margin-left:0.6in"><I>North: </I>
+35</DIV>
+<DIV STYLE="margin-left:0.6in"><I>South: </I>
+30</DIV>
+<DIV STYLE="text-align:center; color:#6495ED">_________________</DIV><BR />
+<DIV CLASS="pn">Spatial data description</DIV>
+<DIV CLASS="pn" STYLE="margin-left:0.2in">Raster dataset information</DIV>
+<DIV STYLE="margin-left:0.4in"><I>Raster format: </I>ESRI GRID</DIV>
+<DIV STYLE="margin-left:0.4in"><I>SDTS raster type: </I>Grid Cell</DIV><DIV STYLE="margin-left:0.4in"><I>Number of raster bands: </I>1</DIV><DIV CLASS="ph2" STYLE="margin-left:0.4in" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Raster properties      <DIV CLASS="pe2" STYLE="display:none"><DIV><I>Origin location: </I>Upper Left</DIV><DIV><I>Has colormap: </I>FALSE</DIV><DIV><I>Data compression type: </I>Default</DIV>
+<DIV><I>Display type: </I>Matrix Values</DIV></DIV></DIV><DIV CLASS="ph2" STYLE="margin-left:0.4in" onmouseover="doHilite()" onmouseout="doHilite()" onclick="hideShowGroup(this)">Cell information      <DIV CLASS="pe2" STYLE="display:none"><DIV><I>Number of cells on x-axis: </I>6000</DIV><DIV><I>Number of cells on y-axis: </I>6000</DIV><DIV><I>Number of cells on z-axis: </I>1</DIV><DIV><I>Number of bits per cell: </I>16</DIV><DIV CLASS="pn">Cell Size</DIV><DIV STYLE="margin-left:0.2in"><I>X distance: </I>0.0008333333333333</DIV><DIV STYLE="margin-left:0.2in"><I>Y distance: </I>0.0008333333333333</DIV></DIV></DIV>
+<BR />
+</DIV>
+<DIV ID="Attributes" class="pv" STYLE="display:none"><BR />
+<DIV CLASS="srh1">Overview</DIV>
+<DIV STYLE="margin-left:0.2in">
+<SPAN CLASS="lt"><PRE ID="original">The HydroSHEDS package provides a suite of various raster and vector data sets, covering many of the common derivative products used in hydrological analyses. The data is prepared in seamless mode and is provided as global or continental maps, or in five-degree by five-degree tile coverage. All elevations are in meters referenced to the WGS84 EGM96 geoid. For more attribute information please see the HydroSHEDS Technical Documentation.
+
+At this time, HydroSHEDS provides only selected core data sets at 3 arc-second and 15 arc-second resolutions, including drainage directions and elevation surfaces. A vectorized stream network is available at 15 arc-second resolution only. Future data developments are scheduled to include basins; flow accumulations; slope; aspect; wetness index; stream orders; flow distances up- and downstream; as well as seamless global products at 30 arc-second  and 5 minute resolution.</PRE></SPAN>
+<SCRIPT>fix(original)</SCRIPT><BR />
+</DIV>
+<DIV CLASS="srh1">Overview citation</DIV><DIV STYLE="margin-left:0.2in">
+<SPAN CLASS="lt"><PRE ID="original">Please see HydroSHEDS Technical Documentation.</PRE></SPAN><BR />
+<SCRIPT>fix(original)</SCRIPT>
+</DIV>
+<BR />
+</DIV>
+</DIV>
+</BODY>
+</HTML>

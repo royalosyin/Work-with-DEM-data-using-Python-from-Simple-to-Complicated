@@ -1,0 +1,186 @@
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>World Wildlife Fund (WWF)</origin>
+				<pubdate>2006</pubdate>
+				<title>HydroSHEDS (CON) - Hydrologically conditioned elevation at 3s resolution</title>
+				<pubinfo>
+					<pubplace>Sioux Falls, SD</pubplace>
+					<publish>U.S. Geological Survey</publish>
+				</pubinfo>
+				<onlink>http://hydrosheds.cr.usgs.gov</onlink>
+				<ftname>n30w100_con</ftname><othercit>Please cite HydroSHEDS as:
+Lehner, B., Verdin, K., Jarvis, A. (2006): HydroSHEDS Technical Documentation. World Wildlife Fund US, Washington, DC. Available at http://hydrosheds.cr.usgs.gov.</othercit><onlink>http://www.worldwildlife.org/hydrosheds</onlink></citeinfo>
+		</citation>
+		<descript>
+			<abstract>HydroSHEDS (Hydrological data and maps based on SHuttle Elevation Derivatives at multiple Scales) provides hydrographic information in a consistent and comprehensive format for regional and global-scale applications. HydroSHEDS offers a suite of geo-referenced data sets (vector and raster), including stream networks, watershed boundaries, drainage directions, and ancillary data layers such as flow accumulations, distances, and river topology information. HydroSHEDS is derived from elevation data of the Shuttle Radar Topography Mission (SRTM) at 3 arc-second resolution. Available HydroSHEDS resolutions range from 3 arc-second (approx. 90 meters at the equator) to 5 minute (approx. 10 km at the equator) with seamless near-global extent.</abstract>
+			<purpose>The goal of developing HydroSHEDS was to generate key data layers to support regional and global watershed analyses, hydrological modeling, and freshwater conservation planning at a quality, resolution and extent that had previously been unachievable.</purpose>
+			<supplinf>For more information please refer to the HydroSHEDS Technical Documentation:
+Lehner, B., Verdin, K., Jarvis, A. (2006): HydroSHEDS Technical Documentation. World Wildlife Fund US, Washington, DC. Available at http://hydrosheds.cr.usgs.gov.
+Please also visit http://www.worldwildlife.org/hydrosheds and http://hydrosheds.cr.usgs.gov for information on data download and status reports.</supplinf>
+			<langdata>en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>2006</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>-100</westbc>
+				<eastbc>-95</eastbc>
+				<northbc>35</northbc>
+				<southbc>30</southbc>
+			</bounding>
+		</spdom>
+		<keywords>
+			<theme>
+				<themekt>GCMD Parameter Keywords</themekt>
+				<themekey>Earth Science</themekey>
+				<themekey>Land Surface</themekey>
+				<themekey>Topography</themekey>
+				<themekey>Terrain Elevation</themekey>
+				<themekey>Digital Elevation Model</themekey>
+				<themekey>3-arc-second DEM</themekey>
+				<themekey>Hydrosphere</themekey>
+				<themekey>Surface Water</themekey>
+				<themekey>Drainage</themekey>
+				<themekey>Hydropattern</themekey>
+				<themekey>Rivers</themekey>
+				<themekey>Streams</themekey>
+				<themekey>Watershed Characteristics</themekey>
+				<themekey>Cartography</themekey>
+				<themekey>Mapping</themekey>
+				<themekey>GIS</themekey>
+				<themekey>EDC</themekey>
+				<themekey>EROS</themekey>
+				<themekey>USGS</themekey>
+			</theme>
+		</keywords>
+		<accconst>None.</accconst>
+		<useconst>Users may apply HydroSHEDS for non-commercial purposes. We kindly ask users to cite HydroSHEDS in any published material produced using this data. Any modification of the original data by users must be noted. The authors of HydroSHEDS may request reprints of publications and copies of derived materials. The user shall not reproduce, convert, (re)publish, (re)distribute, (re)broadcast, (re)transmit, sell, rent, lease, sublicense, lend, assign, time-share, or transfer, in whole or in part, or provide unlicensed third parties access to the data and related materials without explicit written permission from the authors. For more details see HydroSHEDS Technical Documentation.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>U.S. Geological Survey EROS Data Center</address>
+					<city>Sioux Falls</city>
+					<state>SD</state>
+					<postal>57198</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>605-594-6151</cntvoice>
+				<cntfax>605-594-6589</cntfax>
+				<cntemail>custserv@usgs.gov</cntemail>
+				<cntperp><cntper>Customer Services</cntper><cntorg>EROS Data Center</cntorg></cntperp></cntinfo>
+		</ptcontac>
+		<native>Microsoft Windows XP Professional Version 2002 Service Pack 2; ESRI ArcView 3.2a; ESRI ArcGIS 8.2</native>
+		<datacred>HydroSHEDS has been developed by the Conservation Science Program of World Wildlife Fund (WWF), in partnership with the U.S. Geological Survey (USGS), the International Centre for Tropical Agriculture (CIAT), The Nature Conservancy (TNC), and the Center for Environmental Systems Research (CESR) of the University of Kassel, Germany.</datacred><natvform>Raster dataset</natvform></idinfo>
+	<dataqual>
+		<posacc>
+			<horizpa>
+			</horizpa>
+			<vertacc>
+			</vertacc>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>NASA, JPL, NGA, DLR, ASI, USGS</origin>
+						<title>SRTM Data Products</title>
+						<pubdate>2002-2005</pubdate><othercit>Data sets include:
+SRTM-3 by JPL,
+DTED-1 by USGS,
+SWBD by NGA.</othercit><onlink>http://edc.usgs.gov/products/elevation.html</onlink></citeinfo>
+				</srccite>
+				<srccitea>SRTM Data Products</srccitea>
+			</srcinfo>
+			<procstep>
+				<procdesc>HydroSHEDS is derived from elevation data of the Shuttle Radar Topography Mission (SRTM) at 3 arc-second resolution. The original SRTM data have been hydrologically conditioned using a sequence of automated procedures. Existing methods of data improvement and newly developed algorithms have been applied, including void-filling, filtering, stream burning, and upscaling techniques. Manual corrections were made where necessary. For more details please refer to the HydroSHEDS Technical Documentation.</procdesc>
+				<proccont><cntinfo><cntperp><cntper>Bernhard Lehner</cntper><cntorg>World Wildlife Fund US (WWF)</cntorg></cntperp><cntemail>hydrosheds@wwfus.org</cntemail></cntinfo></proccont></procstep>
+			<srcinfo><srccite><citeinfo><title>Auxiliary Data Products</title><onlink>http://srtm.csi.cgiar.org</onlink><onlink>http://www.maproom.psu.edu/dcw/</onlink><origin>CIAT, ESRI, WWF</origin><othercit>Data sets include:
+Void-filled SRTM data by CIAT,
+DCW and ArcWorld by ESRI,
+GLWD by WWF.</othercit><onlink>http://www.wwfus.org/science/data/globallakes.cfm</onlink></citeinfo></srccite><srccitea>Auxiliary Data Products</srccitea></srcinfo></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct>Raster</direct>
+		<rastinfo><rasttype>Grid Cell</rasttype><rastxsz>0.0008333333333333</rastxsz><rastysz>0.0008333333333333</rastysz><rastdtyp>Matrix Values</rastdtyp><rowcount>6000</rowcount><colcount>6000</colcount><rastorig>Upper Left</rastorig><rastband>1</rastband><rastxu>Decimal degrees</rastxu><rastyu>Decimal degrees</rastyu><rastbpp>16</rastbpp><rastnodt>-9999</rastnodt><rastifor>ESRI GRID</rastifor><rastcmap>FALSE</rastcmap><rastcomp>Default</rastcomp><vrtcount>1</vrtcount><rastityp>CON</rastityp></rastinfo>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<geograph>
+				<geogunit>Decimal degrees</geogunit>
+			</geograph>
+			<geodetic>
+				<horizdn>D_WGS_1984</horizdn>
+				<ellips>WGS_1984</ellips>
+				<semiaxis>6378137.000000</semiaxis>
+				<denflat>298.257224</denflat>
+			</geodetic>
+			<cordsysn><geogcsn>Geographic</geogcsn></cordsysn></horizsys>
+		<vertdef><altsys><altdatum>EGM96</altdatum><altunits>Meters</altunits></altsys></vertdef>
+	</spref>
+	<eainfo>
+		<overview><eaover>The HydroSHEDS package provides a suite of various raster and vector data sets, covering many of the common derivative products used in hydrological analyses. The data is prepared in seamless mode and is provided as global or continental maps, or in five-degree by five-degree tile coverage. All elevations are in meters referenced to the WGS84 EGM96 geoid. For more attribute information please see the HydroSHEDS Technical Documentation.
+
+At this time, HydroSHEDS provides only selected core data sets at 3 arc-second and 15 arc-second resolutions, including drainage directions and elevation surfaces. A vectorized stream network is available at 15 arc-second resolution only. Future data developments are scheduled to include basins; flow accumulations; slope; aspect; wetness index; stream orders; flow distances up- and downstream; as well as seamless global products at 30 arc-second  and 5 minute resolution.</eaover><eadetcit>Please see HydroSHEDS Technical Documentation.</eadetcit></overview></eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>U.S. Geological Survey EROS Data Center</address>
+					<city>Sioux Falls</city>
+					<state>SD</state>
+					<postal>57198</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>605-594-6151</cntvoice>
+				<cntfax>605-594-6589</cntfax>
+				<cntemail>custserv@usgs.gov</cntemail>
+				<cntorgp><cntorg>EROS Data Center</cntorg></cntorgp></cntinfo>
+		</distrib>
+		<resdesc>Downloadable data.</resdesc>
+		<distliab>No warranty expressed or implied is made, either regarding the utility of the data on any system, nor shall the act of distribution constitute any such warranty. For full data disclaimer see HydroSHEDS Technical Documentation.</distliab>
+		<availabl>
+			<timeinfo>
+				<sngdate>
+					<caldate>2006</caldate>
+				</sngdate>
+			</timeinfo>
+		</availabl>
+		<stdorder><digform><digtinfo><transize>zipped</transize><dssize>35</dssize></digtinfo></digform></stdorder></distinfo>
+	<metainfo>
+		<metd>20090101</metd>
+		<metc>
+			<cntinfo>
+				<cntperp>
+					<cntper>Bernhard Lehner</cntper>
+					<cntorg>World Wildlife Fund US</cntorg>
+				</cntperp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>1250 24th Street NW</address>
+					<city>Washington</city>
+					<state>DC</state>
+					<postal>20007</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntemail>hydrosheds@wwfus.org</cntemail>
+			</cntinfo>
+		</metc>
+		<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc>local time</mettc>
+	</metainfo>
+	<Esri><ModDate>20090101</ModDate><Sync>FALSE</Sync></Esri>
+</metadata>
