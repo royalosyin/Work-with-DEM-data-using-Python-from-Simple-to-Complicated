@@ -19,6 +19,8 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 
 9. Inundation Estimation with RFSM
 
+10 Visualize DEM in An Interactive Map
+
 To simiplify data reading and prepocessing, xarray (backended with rasterio) is used as possible as I can.
 Hope these tutorials are a little bit helpful to you. Scripts are also available at 
 https://github.com/royalosyin/Work-with-DEM-data-using-Python-from-Simple-to-Complicated.
