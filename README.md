@@ -22,12 +22,9 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 10. Visualize DEM in An Interactive Map
 
 To simiplify data reading and prepocessing, xarray (backended with rasterio) is used as possible as I can.
-Hope these tutorials are a little bit helpful to you. Scripts are also available at 
-https://github.com/royalosyin/Work-with-DEM-data-using-Python-from-Simple-to-Complicated.
+Hope these tutorials are a little bit helpful to you. 
 
 Being a data scientist (maybe the only one in your company), sometimes, you will feel very bored, 
 and the best way to get rid of it is to keep coding with python :).
 
 Many thanks to those people who develop and maintian python packages involved in this tutorial. 
-
-Have a great day.
