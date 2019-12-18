@@ -23,6 +23,10 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 
 Sup01-Quickly Visualize DEM Attributes with Datashader
 
+Sup02-DEM, DTM, DSM and Canopy Height Model
+
+Sup03-Ridgelines Map of DEM
+
 To simiplify data reading and prepocessing, xarray (backended with rasterio) is used as possible as I can.
 Hope these tutorials are a little bit helpful to you. 
 
