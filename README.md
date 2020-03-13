@@ -21,6 +21,8 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 
 10. Visualize DEM in An Interactive Map
 
+11. Reclassify DEM
+
 Sup01-Quickly Visualize DEM Attributes with Datashader
 
 Sup02-DEM, DTM, DSM and Canopy Height Model
