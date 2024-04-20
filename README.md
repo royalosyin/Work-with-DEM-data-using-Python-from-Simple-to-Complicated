@@ -22,6 +22,9 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 10. Visualize DEM in An Interactive Map
 
 11. Reclassify DEM
+12. Merge Overlapping Rasters Using R and Terra
+13. Merge Overlapping Rasters Using python and rioxarray
+14. Merge Overlapping Rasters Using Python and GDAL VRT Pixel Functions
 
 Sup01-Quickly Visualize DEM Attributes with Datashader
 
