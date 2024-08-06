@@ -25,6 +25,7 @@ Work with DEM data using Python from Simple to Complicated. Many python packages
 12. Merge Overlapping Rasters Using R and Terra
 13. Merge Overlapping Rasters Using python and rioxarray
 14. Merge Overlapping Rasters Using Python and GDAL VRT Pixel Functions
+15. Vectorize - Extract Raster Boundry to GeoDataFrame
 
 Sup01-Quickly Visualize DEM Attributes with Datashader
 
